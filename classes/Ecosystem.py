@@ -13,12 +13,20 @@ from Utilities import validation, onarena
 
 class Ecosystem:
   """
+  Ecosystem class for simulating the arena.
+
   Properties
   ---
-  self.duration : Amount of time in a day
-  self.hour:
-  self.robots
-  self.display 
+  self.duration : Amount of hour in a day  
+  self.hour : int = 24
+     current hour  
+  self.robots : list[Robot | Droid | Drone]
+    list of registered robots  
+  self.display_on_update : display arena after update  
+  self.register : Registry book for registered robot, stations, and deliverables  
+  self.messages : Message Queue  
+  self.cache : 
+
   """
   def __init__(self):
     self._duration = 24
@@ -117,6 +125,16 @@ class Ecosystem:
 ####################
 
   def create(self, kind, coordinates = [0,0,0]):
+    """
+    Creates a default kind in kinds list and registers that in the ecosystem.
+
+    Parameters
+    ---
+    kind : string
+      One of kinds list.
+    coordinates : list[int, int, int]
+      starting coordinates
+    """
     def object_init(self,dictionary):
       for k, v in dictionary.items():
         setattr(self, k, v)
@@ -147,6 +165,9 @@ class Ecosystem:
 ##   METHODS      ##
 ####################
   def help(self):
+    """
+    Prints all public properties and methods
+    """
     for a in [a for a in dir(self) if not a.startswith('_') and callable(getattr(self, a))]:
       print (a)
 
@@ -156,6 +177,11 @@ class Ecosystem:
 
   #Filters
   def registry(self, **kwargs):
+    """
+    Returns registry book if no key arguments are given. \n  
+    Key arguments can be used to filter the registry book and get
+    specific items.
+    """
     if kwargs == {}:
       return self._register
     else:
@@ -274,6 +300,9 @@ class Ecosystem:
       c.power_use
 ## UPDATE ##
   def update(self):
+    """
+    validates moves, coordinates, etc and updates the ecosystem for registered robots
+    """
     ## Power regulation
 
     for robot in self.robots:                             #note - robots now contains pizzas, so use the internal property which filters

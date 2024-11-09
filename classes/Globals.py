@@ -14,6 +14,7 @@ arena_limits = (default_width,default_height,default_altitude)
 #Fading of robots  alpha = m_fade * soc/capacity + c_fade
 c_fade = 0.1
 m_fade = 0.9 - c_fade
+
 #deliverable fading
 delivered_fade = 0.33
 delivered_fade_rate = .005   #d alpha at -.5% per update
@@ -26,12 +27,6 @@ system_efficiency = 0.025
 NL = "\n"
 TB = "\t"
 PR = ">"
-
-#@title Validation Lists {display-mode: "code"}
-
-####################
-## DEFAULTS       ##
-####################
 
 # Matplotlib colors and shapes semantics # https://matplotlib.org/stable/api/markers_api.html
 mpl_shapes = {'square':'s', 'circle':'o','triangle':'^', 'plus':'P', 'star':'*', 'diamond':'D', 'x':'x', 'hexagon':'h'}
